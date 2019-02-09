@@ -17,7 +17,9 @@ amdRequire(["vs/editor/editor.main"], () => {
 // monaco-editorのモジュール読み込み完了時に行う、エディタ初期化処理
 function onModuleLoaded() {
   editor = monaco.editor.create(document.getElementById("container"), {
-    value: ["function x() {", '\tconsole.log("Hello world!");', "}"].join("\n"),
+    value: ["const cool = () => {", '\tconsole.log("I am cool.");', "}"].join(
+      "\n"
+    ),
     language: "javascript",
     theme: "vs-dark",
     automaticLayout: true,
