@@ -9,7 +9,7 @@ A place where you can run JS code (in a new tab via puppeteer), type and when **
 ### Install
 
 ```
-npm install
+yarn
 ```
 
 ### Run
