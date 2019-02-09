@@ -1,4 +1,5 @@
 import { app, BrowserWindow } from "electron";
+import * as path from "path";
 
 // メインウィンドウの参照をグローバルに持っておく。
 var mainWindow: Electron.BrowserWindow = null;
@@ -16,7 +17,7 @@ app.on("ready", function() {
   mainWindow = new BrowserWindow({ width: 800, height: 600 });
 
   // index.htmlを開く
-  mainWindow.loadURL("file://" + __dirname + "/index.html");
+  mainWindow.loadURL("file://" + path.resolve(__dirname, "..", "index.html"));
 
   // ウィンドウが閉じられたら、ウィンドウへの参照を破棄する。
   mainWindow.on("closed", function() {
