@@ -1,4 +1,5 @@
 /// <reference path="node_modules/monaco-editor/monaco.d.ts" />
+import * as puppeteer from "puppeteer";
 // import * as electron from "electron";
 // import { remote } from "electron";
 // const app = remote.app;
@@ -19,6 +20,33 @@ function onModuleLoaded() {
     value: ["function x() {", '\tconsole.log("Hello world!");', "}"].join("\n"),
     language: "javascript",
     theme: "vs-dark",
-    automaticLayout: true
+    automaticLayout: true,
+    codeLens: false,
+    fontSize: 14,
+    scrollBeyondLastLine: false,
+    minimap: { enabled: false }
   });
+
+  editor.addCommand(
+    monaco.KeyMod.CtrlCmd + monaco.KeyCode.Enter,
+    () => {
+      const model = editor.getModel();
+      const code = model.getValue();
+      evaluate(code);
+    },
+    ""
+  );
 }
+
+const evaluate = async content => {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+
+  page.once("load", () => console.log("Page loaded!"));
+  page.on("console", msg => {
+    console.log(msg.text());
+  });
+
+  await page.addScriptTag({ content });
+  await browser.close();
+};

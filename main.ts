@@ -15,7 +15,7 @@ app.on("window-all-closed", function() {
 app.on("ready", function() {
   // 新規ウィンドウ作成
   mainWindow = new BrowserWindow({ width: 800, height: 600 });
-
+  mainWindow.webContents.openDevTools({ mode: "right" });
   // index.htmlを開く
   mainWindow.loadURL("file://" + path.resolve(__dirname, "..", "index.html"));
 
@@ -23,6 +23,4 @@ app.on("ready", function() {
   mainWindow.on("closed", function() {
     mainWindow = null;
   });
-
-  mainWindow.webContents.openDevTools();
 });
