@@ -1,4 +1,3 @@
-import * as electron from "electron";
 import { app, BrowserWindow } from "electron";
 
 // メインウィンドウの参照をグローバルに持っておく。
@@ -23,4 +22,6 @@ app.on("ready", function() {
   mainWindow.on("closed", function() {
     mainWindow = null;
   });
+
+  mainWindow.webContents.openDevTools();
 });

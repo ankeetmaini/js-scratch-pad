@@ -1,9 +1,9 @@
 /// <reference path="node_modules/monaco-editor/monaco.d.ts" />
-import * as electron from "electron";
-import { remote } from "electron";
-const app = remote.app;
-const BrowserWindow = remote.BrowserWindow;
-const dialog = remote.dialog;
+// import * as electron from "electron";
+// import { remote } from "electron";
+// const app = remote.app;
+// const BrowserWindow = remote.BrowserWindow;
+// const dialog = remote.dialog;
 
 declare var amdRequire;
 var editor: monaco.editor.IStandaloneCodeEditor;
@@ -17,15 +17,8 @@ amdRequire(["vs/editor/editor.main"], () => {
 function onModuleLoaded() {
   editor = monaco.editor.create(document.getElementById("container"), {
     value: ["function x() {", '\tconsole.log("Hello world!");', "}"].join("\n"),
-    language: "typescript",
-    automaticLayout: true,
-    theme: "vs-dark"
+    language: "javascript",
+    theme: "vs-dark",
+    automaticLayout: true
   });
 }
-
-function showEditorText() {
-  var text = editor.getValue();
-  alert(text);
-}
-
-document.getElementById("btnShowText").onclick = showEditorText;
