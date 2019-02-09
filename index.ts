@@ -42,9 +42,15 @@ const evaluate = async content => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
-  page.once("load", () => console.log("Page loaded!"));
-  page.on("console", msg => {
-    console.log(msg.text());
+  page.on("console", message => {
+    console.log(message.text());
+  });
+  page.on("error", err => {
+    console.log(err);
+  });
+
+  page.on("pageerror", err => {
+    console.log(err);
   });
 
   await page.addScriptTag({ content });
