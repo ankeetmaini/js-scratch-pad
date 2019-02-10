@@ -8,7 +8,6 @@ amdRequire(["vs/editor/editor.main"], () => {
   onModuleLoaded();
 });
 
-// monaco-editorのモジュール読み込み完了時に行う、エディタ初期化処理
 function onModuleLoaded() {
   editor = monaco.editor.create(document.getElementById("container"), {
     value: ["const cool = () => {", '\tconsole.log("I am cool.");', "}"].join(
