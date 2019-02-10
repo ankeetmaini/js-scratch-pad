@@ -1,15 +1,9 @@
-/// <reference path="node_modules/monaco-editor/monaco.d.ts" />
+/// <reference path="../node_modules/monaco-editor/monaco.d.ts" />
 import * as puppeteer from "puppeteer";
-// import * as electron from "electron";
-// import { remote } from "electron";
-// const app = remote.app;
-// const BrowserWindow = remote.BrowserWindow;
-// const dialog = remote.dialog;
 
 declare var amdRequire;
 var editor: monaco.editor.IStandaloneCodeEditor;
 
-// loader.jsのrequire関数を使い、monaco-editorのコードを読み込む
 amdRequire(["vs/editor/editor.main"], () => {
   onModuleLoaded();
 });
