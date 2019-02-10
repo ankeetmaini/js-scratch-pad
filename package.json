@@ -12,13 +12,13 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^1.7.5",
-    "electron-packager": "^9.0.1",
-    "typescript": "^2.5.2"
+    "electron": "^4.0.4",
+    "electron-packager": "^13.0.1",
+    "typescript": "^3.3.3"
   },
   "dependencies": {
     "@types/puppeteer": "^1.12.1",
-    "monaco-editor": "^0.10.0",
+    "monaco-editor": "^0.15.6",
     "puppeteer": "^1.12.2"
   }
 }
